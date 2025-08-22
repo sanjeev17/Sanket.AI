@@ -40,19 +40,20 @@ A fun and interactive web app 🎤➡️📝➡️🤟 that captures live speech
 
 **1️⃣ Main page**
 
-!\[Main page]\(photo-main page sanket ai.png)
+![Main page](main page sanket ai.png)
 
 **2️⃣ Login**
 
-!\[Login page]\(photo-login page.png)
+![Login page](login page.png)
 
 **3️⃣ Record audio**
 
-!\[Audio recording page]\(photo-audio recording page.png)
+![Audio recording page](audio recording page.png)
 
 **4️⃣ Result (ISL output)**
 
-![Result page](photo-result.png)
+![Result page](result.png)
+
 
 ---
 
