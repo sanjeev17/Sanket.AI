@@ -38,22 +38,21 @@ A fun and interactive web app 🎤➡️📝➡️🤟 that captures live speech
 
 ## 🖼️ App flow (screens)
 
-**1️⃣ Main page**
+1️⃣ Main page  
 
-![Main page](main page sanket ai.png)
+![Main page](main%20page%20sanket%20ai.png)
 
-**2️⃣ Login**
+2️⃣ Login  
 
-![Login page](login page.png)
+![Login page](login%20page.png)
 
-**3️⃣ Record audio**
+3️⃣ Record audio  
 
-![Audio recording page](audio recording page.png)
+![Audio recording page](audio%20recording%20page.png)
 
-**4️⃣ Result (ISL output)**
+4️⃣ Result (ISL output)  
 
 ![Result page](result.png)
-
 
 ---
 
