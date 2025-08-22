@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* General Styling */
+    body {
+        font-family: Roboto,Arial;
+        background-image: url("https://img.freepik.com/free-vector/background-wave-minimalist-modern-style_483537-5226.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #333;
+        display: flex; /* Enable flexbox on the body */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        min-height: 100vh; /* Ensure full viewport height */
+    }
+
+    /* Navbar Styling (unchanged) */
+    .navbar { /* ... */ }
+    .nav-logo { /* ... */ }
+    .hamburger { /* ... */ }
+    .mobile-menu { /* ... */ }
+    .close-btn { /* ... */ }
+
+    /* Hero Section */
+    .hero-container {
+        display: flex;
+        flex: 1; /* Take up available space to center vertically */
+        align-items: center; /* Vertically center */
+        justify-content: center; /* Horizontally center */
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto; /* Center horizontally with auto margins */
+        max-width: 900px; /* Set a maximum width for larger screens */
+        border-radius: 8px;
+    }
+
+    .video-container {
+        flex: 1;
+        text-align: center;
+        padding-right: 40px;
+    }
+
+    .video-container video {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-container p {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 20px;
+        color: #007bff;
+    }
+
+    .video-container .button {
+        padding: 15px 30px;
+        background:rgb(38, 53, 154); /* Orange color */
+        color: white;
+        border: none; /* Remove default border */
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    }
+
+    .video-container .button:hover {
+        background-color:rgb(44, 83, 131); /* Darker orange on hover */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+    }
+
+    .quote-container {
+        flex: 1;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 28px;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .quote-author {
+        margin-top: 20px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333;
+    }
+
+    /* ... (rest of the CSS) */
+
+</style>
+
+<div class="hero-container">
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="{% static 'Hello.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>Welcome to our Interactive Learning Experience</p>
+        <a href="{% url 'animation' %}" class="button">Start Learning</a>
+    </div>
+    <div class="quote-container">
+        "“If I, deaf, blind, find life rich and interesting, how much more can you gain by the use of your five senses!”"
+        <div class="quote-author">- Helen Keller</div>
+    </div>
+</div>
+
+<script>
+    // ... (JavaScript code)
+</script>
+
+{% endblock %}

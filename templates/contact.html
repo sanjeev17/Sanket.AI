@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* General Styling (from homepage) */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #e0f2f7, #bbdefb);
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+  .navbar { /*... */ }
+  .nav-logo { /*... */ }
+  .hamburger { /*... */ }
+  .mobile-menu { /*... */ }
+  .close-btn { /*... */ }
+
+  .sanket-header {
+        background-color: #2e2e2e;
+        color: white;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        padding: 30px 0;
+    }
+
+    /* Contact Us Page Specific Styles */
+  .contact-container {
+        flex: 1; /* Take up available space to center vertically */
+        display: flex;
+        flex-direction: column; /* Align items vertically */
+        justify-content: center; /* Horizontally center */
+        align-items: center; /* Vertically center */
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 600px; /* Adjust max width as needed */
+        border-radius: 8px;
+        text-align: center; /* Center text within the container */
+    }
+
+  .contact-container h2 {
+        color: #007bff; /* Blue color for headings */
+        margin-bottom: 10px;
+    }
+
+  .contact-container hr {
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+        width: 80%; /* Make hr less wide */
+    }
+
+  .td { /* Style for the text paragraphs */
+        margin-bottom: 10px;
+        font-size: 1.2rem; /* slightly larger font */
+    }
+
+  .contact-container p { /* Style for the text paragraphs */
+        margin-bottom: 10px;
+    }
+
+
+</style>
+
+<div class="sanket-header">Sanket AI</div>
+
+<div class="contact-container">
+    <h2>VERSION 1.0.0</h2>
+    <hr>
+    <h2>CONTACT US</h2>
+    <p class="td">For any queries regarding this website contact us on following:</p>
+    <p class="td">Our Email ID: gangstersa2s@gmail.com</p>
+    <p class="td">Contact number: 9876987698</p>
+    <hr>
+    <p class="td">Thank you, For visiting our website</p>
+</div>
+
+{% endblock %}

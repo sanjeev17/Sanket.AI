@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* General Styling (from homepage) */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #e0f2f7, #bbdefb);
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .navbar { /* ... */ }
+    .nav-logo { /* ... */ }
+    .hamburger { /* ... */ }
+    .mobile-menu { /* ... */ }
+    .close-btn { /* ... */ }
+
+    .sanket-header {
+        background-color: #2e2e2e;
+        color: white;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        padding: 30px 0;
+    }
+
+    /* Sign Up Form Specific Styles (very similar to login) */
+    .form-style {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 500px; /* Adjust max width as needed */
+        border-radius: 8px;
+    }
+
+    .form-style h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+
+    .site-form {
+        width: 100%;
+    }
+
+    .site-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .site-form input[type="text"],
+    .site-form input[type="password"],
+    .site-form input[type="email"] { /* Added email input style */
+        width: calc(100% - 12px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .site-form select {
+        width: calc(100% - 12px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .submit {
+        background: rgb(38, 53, 154);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit:hover {
+        background-color: rgb(44, 83, 131);
+    }
+
+    .errorlist {
+        color: red;
+        margin-top: 10px;
+    }
+
+    .errorlist li {
+        list-style: none;
+    }
+
+</style>
+
+<div class="sanket-header">Sanket AI</div>
+
+<div class="form-style">
+    <h1>Sign Up</h1>
+    <form class="site-form" action="." method="post">
+        {% csrf_token %}
+        {{ form }}
+        <br><br>
+        <input class="submit" type="submit" value="Sign Up">
+    </form>
+</div>
+
+<script type="text/javascript">
+    document.getElementsByTagName("span")[0].innerHTML = "";
+    document.getElementsByTagName("span")[1].innerHTML = "";
+</script>
+
+{% endblock %}

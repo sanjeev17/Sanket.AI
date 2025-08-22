@@ -1,0 +1,65 @@
+# ----------------------
+# Python ignores
+# ----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.pkl
+
+# Virtual environment
+venv/
+.env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# ----------------------
+# Logs & temp files
+# ----------------------
+*.log
+*.tmp
+*.swp
+*.bak
+
+# ----------------------
+# IDE / Editor settings
+# ----------------------
+.vscode/
+.idea/
+*.code-workspace
+
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Project-specific ignores
+# ----------------------
+# Datasets and extracted frames
+dataset/videos/
+dataset/frames/
+dataset/annotations/
+
+# Media files (animations, test recordings, results)
+*.mp4
+*.avi
+*.wav
+*.mp3
+*.png
+*.jpg
+*.jpeg
+
+# Output folders
+outputs/
+checkpoints/
+runs/
+results/
+
+# Node.js (if front-end uses npm)
+node_modules/

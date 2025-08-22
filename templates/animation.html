@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("https://w0.peakpx.com/wallpaper/606/5/HD-wallpaper-black-abstract-waves-minimal-black-wavy-background-material-design-abstract-waves-black-backgrounds-creative-waves-patterns.jpg"); /* Replace with your image path */
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        background-color: rgba(63, 57, 57, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 900px;
+        border-radius: 8px;
+    }
+
+    .split {
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .mytext {
+        width: calc(100% - 60px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .mic {
+        padding: 10px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+
+    .submit {
+        background: rgb(38, 53, 154);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit:hover {
+        background-color: rgb(44, 83, 131);
+    }
+
+    .td {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    #list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #list li {
+        margin: 5px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+    }
+
+    #videoPlayer {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="split left">
+        <h2>Enter Text or Use Mic</h2>
+        <br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="sen" class="mytext" id="speechToText" placeholder="">
+            <button type="button" class="mic" id="micButton"><img src="{% static 'mic3.png' %}" height="32px" width="38px" /></button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" name="submit" class="submit">
+        </form>
+        <br>
+        <table>
+            <tr>
+                <td class="td">The text that you entered is:</td>
+                <td class="td">{{ text }}</td>
+            </tr>
+            <tr>
+                <td class="td">Key words in sentence:</td>
+                <td class="td">
+                    <ul id="list">
+                        {% for word in words %}
+                        <li>{{ word }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="split right">
+        <h2>Sign Language Animation</h2>
+        <div style="text-align:center">
+            <button class="submit" onclick="playPause()">Play/Pause</button>
+            <video id="videoPlayer" width="600" height="350" preload="auto">
+                <source src="" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+    </div>
+</div>
+
+<script>
+    const micButton = document.getElementById('micButton');
+    const speechToText = document.getElementById('speechToText');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const list = document.getElementById('list');
+
+    micButton.addEventListener('click', () => {
+        record();
+    });
+
+    function record() {
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-IN';
+
+            recognition.onresult = function (event) {
+                speechToText.value = event.results[0][0].transcript;
+            };
+
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+                alert("Speech recognition error. Please check your microphone and browser settings.");
+            };
+
+            recognition.start();
+        } else {
+            console.error('Web Speech API is not supported in this browser.');
+            alert("Your browser does not support speech recognition. Please try using a different browser.");
+        }
+    }
+
+    function play() {
+        const videoSource = [];
+        const videos = list.getElementsByTagName("li");
+
+        for (let j = 0; j < videos.length; j++) {
+            videoSource[j] = "/static/" + videos[j].innerHTML + ".mp4";
+        }
+
+        let i = 0;
+        const videoCount = videoSource.length;
+
+        function videoPlay(videoNum) {
+            videos[videoNum].style.color = "#09edc7";
+            videos[videoNum].style.fontSize = "xx-large";
+            videoPlayer.setAttribute("src", videoSource[videoNum]);
+            videoPlayer.load();
+            videoPlayer.play();
+        }
+
+        videoPlayer.addEventListener('ended', myHandler, false);
+        videos[0].style.color = "#09edc7";
+        videos[0].style.fontSize = "xx-large";
+
+        videoPlay(0);
+
+        function myHandler() {
+            videos[i].style.color = "#feda6a";
+            videos[i].style.fontSize = "20px";
+            i++;
+            if (i === videoCount) {
+                videoPlayer.pause();
+            } else {
+                videoPlay(i);
+            }
+        }
+    }
+
+    function playPause() {
+        if (videoPlayer.paused) {
+            play();
+        } else {
+            videoPlayer.pause();
+        }
+    }
+</script>
+
+{% endblock %}
